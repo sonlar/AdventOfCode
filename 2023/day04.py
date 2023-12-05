@@ -1,13 +1,14 @@
 class Scratchcards:
     def __init__(self, file):
         self.file = file
-        self.score = 0
         self.process_numbers()
 
     def process_numbers(self):
         num = dict()
+        tickets = dict()
         with open(self.file, "r") as f:
-            for line in f:
+            for line_number, line in enumerate(f):
+                tickets[line_number + 1] = tickets.get(line_number + 1, 0) + 1
                 line = line[line.find(":") + 1 :]
                 winners, numbers = line[: line.find("|")], line[line.find("|") + 1 :]
                 for digit in winners.split():
@@ -15,17 +16,13 @@ class Scratchcards:
                 for digit in numbers.split():
                     if digit in num:
                         num[digit] = num.get(digit, 0) + 1
-                score = 0
-                for x in range(sum(num.values())):
-                    score *= 2
-                    if score == 0:
-                        score += 1
-                self.score += score
+                for ticket in range(tickets[line_number + 1]):
+                    for x in range(1, sum(num.values()) + 1):
+                        tickets[line_number + 1 + x] = (
+                            tickets.get(line_number + 1 + x, 0) + 1
+                        )
                 num.clear()
-        self.print_score()
-
-    def print_score(self):
-        print(self.score)
+        print(sum(tickets.values()))
 
 
 Scratchcards("input.txt")
