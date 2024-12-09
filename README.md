@@ -15,5 +15,5 @@
 
 | Days     | Puzzles                                            | Solutions                               | Parts    |
 | -------- | -------------------------------------------------- | --------------------------------------- | -------- |
-| 1        | [Historian Hysteria](https://adventofcode.com/2024/day/1) | [`2024/day01.go`](2024/day01.go) | ⭐     |
+| 1        | [Historian Hysteria](https://adventofcode.com/2024/day/1) | [`2024/day01.go`](2024/day01.go) | ⭐⭐     |
 | **1/25** | -                                                  | [`2024`](2024/)                 | **0/50** |

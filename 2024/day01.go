@@ -3,9 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
-	"math"
 	"os"
-	"sort"
 	"strconv"
 )
 
@@ -20,7 +18,8 @@ func main() {
 	count := 1
 	even := make([]int, 0)
 	odd := make([]int, 0)
-	diff := 0.0
+	evenmap := make(map[int]int)
+	sum := 0
 
 	file, err := os.ReadFile("input")
 	if err != nil {
@@ -48,11 +47,13 @@ func main() {
 		}
 	}
 
-	sort.Ints(odd)
-	sort.Ints(even)
-	for i := 0; i < len(odd); i++ {
-		diff += math.Abs(float64(odd[i] - even[i]))
+	for _, val := range even {
+		evenmap[val]++
 	}
-	diffint := int(diff)
-	fmt.Printf("%d", diffint)
+
+	for _, val := range odd {
+		sum += evenmap[val] * val
+		fmt.Printf("val:%v sum:%v\n", val, sum)
+	}
+	fmt.Println(sum)
 }
