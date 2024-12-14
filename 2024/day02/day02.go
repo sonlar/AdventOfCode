@@ -27,8 +27,7 @@ func checkRequirements(line []float64) bool {
 				}
 			}
 		}
-	}
-	if line[0] < line[1] {
+	} else if line[0] < line[1] {
 		for key := range line {
 			if key+1 < len(line) {
 				if line[key] >= line[key+1] {
@@ -43,8 +42,9 @@ func checkRequirements(line []float64) bool {
 				}
 			}
 		}
+	} else {
+		return false
 	}
-	fmt.Println(line)
 	return true
 }
 func main() {
