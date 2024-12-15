@@ -11,30 +11,20 @@ import (
 )
 
 func checkRequirements(line []float64) bool {
-
 	for key := range line {
 		if key+1 < len(line) {
-
 			if line[0] > line[1] {
 				if line[key] <= line[key+1] {
-					// fmt.Print("Not decreasing:")
-					// fmt.Printf("key:%v key+1:%v\n", line[key], line[key+1])
 					return false
 				}
 				if math.Abs(line[key]-line[key+1]) > 3 {
-					// fmt.Print("Too big of a difference:")
-					// fmt.Printf("key:%v key+1:%v\n", line[key], line[key+1])
 					return false
 				}
 			} else if line[0] < line[1] {
 				if line[key] >= line[key+1] {
-					// fmt.Print("Not increasing:")
-					// fmt.Printf("key:%v key+1:%v\n", line[key], line[key+1])
 					return false
 				}
 				if math.Abs(line[key]-line[key+1]) > 3 {
-					// fmt.Print("Too big of a difference:")
-					// fmt.Printf("key:%v key+1:%v\n", line[key], line[key+1])
 					return false
 				}
 			} else {
@@ -44,6 +34,7 @@ func checkRequirements(line []float64) bool {
 	}
 	return true
 }
+
 func main() {
 	safe_reports := 0
 
@@ -51,7 +42,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
