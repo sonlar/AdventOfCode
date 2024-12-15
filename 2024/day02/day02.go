@@ -12,9 +12,10 @@ import (
 
 func checkRequirements(line []float64) bool {
 
-	if line[0] > line[1] {
-		for key := range line {
-			if key+1 < len(line) {
+	for key := range line {
+		if key+1 < len(line) {
+
+			if line[0] > line[1] {
 				if line[key] <= line[key+1] {
 					// fmt.Print("Not decreasing:")
 					// fmt.Printf("key:%v key+1:%v\n", line[key], line[key+1])
@@ -25,11 +26,7 @@ func checkRequirements(line []float64) bool {
 					// fmt.Printf("key:%v key+1:%v\n", line[key], line[key+1])
 					return false
 				}
-			}
-		}
-	} else if line[0] < line[1] {
-		for key := range line {
-			if key+1 < len(line) {
+			} else if line[0] < line[1] {
 				if line[key] >= line[key+1] {
 					// fmt.Print("Not increasing:")
 					// fmt.Printf("key:%v key+1:%v\n", line[key], line[key+1])
@@ -40,10 +37,10 @@ func checkRequirements(line []float64) bool {
 					// fmt.Printf("key:%v key+1:%v\n", line[key], line[key+1])
 					return false
 				}
+			} else {
+				return false
 			}
 		}
-	} else {
-		return false
 	}
 	return true
 }
