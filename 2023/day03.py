@@ -1,3 +1,6 @@
+from re import match
+
+
 class Day03:
     def __init__(self, file) -> None:
         self.file = file
@@ -9,8 +12,8 @@ class Day03:
     def find_num(self) -> None:
         num = list()
         tempnum = str()
-        for line in self.f:
-            for char in line:
+        for y,line in enumerate(self.f):
+            for x, char in enumerate(line):
                 if self.is_num(char):
                     tempnum += char
                 elif tempnum:
@@ -18,8 +21,13 @@ class Day03:
                     tempnum = str()
         print(num)
 
-    def is_num(self, num) -> bool:
-        if num.isdigit():
+    def is_symbol(self, char):
+        if match(r"[^\w\.]", char):
+            return True
+        return False
+
+    def is_num(self, char) -> bool:
+        if char.isdigit():
             return True
         return False
 
