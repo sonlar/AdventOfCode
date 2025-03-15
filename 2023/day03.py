@@ -34,7 +34,7 @@ class Day03:
         return False
 
     def is_symbol(self, char) -> bool:
-        if match(r"[^\w\.]", char):
+        if match(r"[^\w\.\n]", char):
             return True
         return False
 
@@ -45,6 +45,6 @@ class Day03:
 
 
 if "__main__" == __name__:
-    scheme = Day03("test.txt")
+    scheme = Day03("input.txt")
     scheme.read_file()
     scheme.find_num()
