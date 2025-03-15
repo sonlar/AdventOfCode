@@ -34,7 +34,7 @@ class Day03:
         return False
 
     def is_symbol(self, char) -> bool:
-        if match(r"[^\w\.\n]", char):
+        if match(r"[*]", char):
             return True
         return False
 
