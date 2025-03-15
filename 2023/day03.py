@@ -20,9 +20,9 @@ class Day03:
                     tempnum += char
                 elif tempnum:
                     if self.check_adjacent(y, x, len(tempnum), y_length, x_length):
-                        print(tempnum)
-                        num.append(tempnum)
+                        num.append(int(tempnum))
                     tempnum = str()
+        print(sum(num))
 
     def check_adjacent(self, y, x, num_length, y_length, x_length) -> bool:
         for ypos in range(y-1, y+2):
@@ -32,7 +32,6 @@ class Day03:
                         if self.is_symbol(self.f[ypos][xpos]):
                             return True
         return False
-
 
     def is_symbol(self, char) -> bool:
         if match(r"[^\w\.]", char):
