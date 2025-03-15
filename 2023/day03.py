@@ -13,10 +13,10 @@ class Day03:
             for char in line:
                 if self.is_num(char):
                     tempnum += char
-                else:
-                    if tempnum:
-                        num.append(tempnum)
-                        tempnum = str()
+                elif tempnum:
+                    num.append(tempnum)
+                    tempnum = str()
+        print(num)
 
     def is_num(self, num) -> bool:
         if num.isdigit():
