@@ -12,16 +12,29 @@ class Day03:
     def find_num(self) -> None:
         num = list()
         tempnum = str()
+        y_length = len(self.f)
+        x_length = len(self.f[0])
         for y,line in enumerate(self.f):
             for x, char in enumerate(line):
                 if self.is_num(char):
                     tempnum += char
                 elif tempnum:
-                    num.append(tempnum)
+                    if self.check_adjacent(y, x, len(tempnum), y_length, x_length):
+                        print(tempnum)
+                        num.append(tempnum)
                     tempnum = str()
-        print(num)
 
-    def is_symbol(self, char):
+    def check_adjacent(self, y, x, num_length, y_length, x_length) -> bool:
+        for ypos in range(y-1, y+2):
+            if 0 <= ypos < y_length:
+                for xpos in range(x-num_length-1,x+1):
+                    if 0<= xpos < x_length:
+                        if self.is_symbol(self.f[ypos][xpos]):
+                            return True
+        return False
+
+
+    def is_symbol(self, char) -> bool:
         if match(r"[^\w\.]", char):
             return True
         return False
