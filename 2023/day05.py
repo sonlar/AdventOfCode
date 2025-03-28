@@ -18,16 +18,19 @@ class Day05:
                     for i in range(int(line_split[2])):
                         self.maps[current_map][int(line_split[1])+i] = self.maps[current_map].get(int(line_split[1])+i, int(line_split[0])+i)
 
-    def find_location(self) -> None:
-        for seed in self.seeds:
-            location = seed
-            for map in self.maps:
-                location = self.maps[map].get(location, location)
-            print(f"seed: {seed}, location: {location}")
+    def find_location(self, seed) -> int:
+        for map in self.maps:
+            seed = self.maps[map].get(seed, seed)
+        return seed
 
+    def lowest_location(self):
+        lowest = float("inf")
+        for seed in self.seeds:
+            lowest = min(self.find_location(seed), lowest)
+        return lowest
 
 
 if "__main__" == __name__:
     seeds = Day05("input.txt")
     seeds.extract_mapping()
-    seeds.find_location()
+    print(seeds.lowest_location())
