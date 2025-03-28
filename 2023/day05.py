@@ -2,7 +2,8 @@ class Day05:
     def __init__(self, input) -> None:
         self.input = input
         self.seeds = list()
-        self.maps = {}
+        self.maps = dict()
+        self.names = list()
 
     def extract_mapping(self) -> None:
         current_map = None
@@ -13,14 +14,23 @@ class Day05:
                     self.seeds.extend(int(seed) for seed in line_split[1:])
                 elif "map" in line:
                     current_map = line_split[0]
+                    self.names.append(current_map.replace("-", "_"))
                     self.maps.update({current_map: dict()})
-                elif len(line_split) > 0 and line_split[0].isdigit():
-                    for i in range(int(line_split[2])):
-                        self.maps[current_map][int(line_split[1])+i] = self.maps[current_map].get(int(line_split[1])+i, int(line_split[0])+i)
+                elif line_split and line_split[0].isdigit():
+                    line_split = [int(num) for num in line_split]
+                    self.maps[current_map][(line_split[1], line_split[1]+(line_split[2]-1))] = self.maps[current_map].get((line_split[1], line_split[1]+line_split[2]-1), (line_split[0], line_split[0]+line_split[2]-1))
+
+    def split_mapping(self):
+        for name in self.names:
+            setattr(self, name, self.maps.pop(name.replace("_", "-"))) 
 
     def find_location(self, seed) -> int:
-        for map in self.maps:
-            seed = self.maps[map].get(seed, seed)
+        for name in self.names:
+            name = getattr(self, name)
+            for key, value in name.items():
+                if key[0] <= seed <= key[1]:
+                    seed = seed + (value[0] - key[0])
+                    break
         return seed
 
     def lowest_location(self):
@@ -33,4 +43,5 @@ class Day05:
 if "__main__" == __name__:
     seeds = Day05("input.txt")
     seeds.extract_mapping()
+    seeds.split_mapping()
     print(seeds.lowest_location())
