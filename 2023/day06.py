@@ -1,3 +1,5 @@
+import math
+
 class Race:
     def __init__(self, file) -> None:
         self.file = file
@@ -30,9 +32,18 @@ class Race:
                 temp = 0
         print(combination)
 
+    def abc(self):
+        a = 1
+        b = self.time[0]
+        c = self.distance[0]
+        lower = math.ceil((-b - math.sqrt(math.pow(b, 2) - 4 * a* c )) / 2 * a)
+        upper = math.floor((-b + math.sqrt(math.pow(b, 2) - 4 * a* c )) / 2 * a)
+        combinations = len(range(lower, upper+1))
+        print(combinations)
 
 if "__main__" == __name__:
     file = "input.txt"
     first_race = Race(file)
     first_race.read_file()
-    first_race.calculate()
+    # first_race.calculate()
+    first_race.abc()
