@@ -11,7 +11,9 @@
 | 3        | [Gear Ratios](https://adventofcode.com/2023/day/3)                     | [`Day 03`](2023/day03.py)               | ⭐⭐      |
 | 4        | [Scratchcards](https://adventofcode.com/2023/day/4)                    | [`Day 04`](2023/day04.py)               | ⭐⭐      |
 | 5        | [If You Give A Seed A Fertilizer](https://adventofcode.com/2023/day/5) | [`Day 05`](2023/day05.py)               | ⭐        |
-| **5/25** | -                                                                      | [`2023`](2023/)                         | **9/50** |
+| 6        | [Wait For It](https://adventofcode.com/2023/day/6)                     | [`Day 06`](2023/day06.py)               | ⭐⭐      |
+
+| **6/25** | -                                                                      | [`2023`](2023/)                         | **11/50** |
 
 ### 🗓️ [2024](https://adventofcode.com/2024)
 
