@@ -18,10 +18,24 @@ class Race:
                             self.distance.append(int(num))
                         num = str()
 
-        print(self.time)
-        print(self.distance)
+    def calculate(self):
+        combination = 1
+        temp = 0
+        for time, distance in zip(self.time, self.distance):
+            for num in range(time):
+                if ((time - num) * num > distance):
+                    temp += 1
+            if temp:
+                combination *= temp
+                temp = 0
+        print(combination)
+
+
+
+
 
 if "__main__" == __name__:
     file = "input.txt"
     first_race = Race(file)
     first_race.read_file()
+    first_race.calculate()
