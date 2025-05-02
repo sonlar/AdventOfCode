@@ -11,12 +11,12 @@ class Race:
                 for character in line:
                     if character.isdigit():
                         num += character
-                    elif num:
-                        if line.startswith("Time:"):
-                            self.time.append(int(num))
-                        elif line.startswith("Distance:"):
-                            self.distance.append(int(num))
-                        num = str()
+                if num:
+                    if line.startswith("Time:"):
+                        self.time.append(int(num))
+                    elif line.startswith("Distance:"):
+                        self.distance.append(int(num))
+                    num = str()
 
     def calculate(self):
         combination = 1
@@ -29,9 +29,6 @@ class Race:
                 combination *= temp
                 temp = 0
         print(combination)
-
-
-
 
 
 if "__main__" == __name__:
