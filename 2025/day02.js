@@ -4,6 +4,7 @@ const data = fs.readFileSync("./input", "utf8");
 const ids = data.split(/[,\n]/).filter(Boolean);
 const ranges = ids.map((id) => id.split("-"));
 
+console.time();
 const isRepeating = (line, pattern) => {
   if (line.length % pattern.length != 0) return false;
   let j = 0;
@@ -11,7 +12,6 @@ const isRepeating = (line, pattern) => {
     if (line.slice(j, i) != pattern) return false;
     j = i;
   }
-  console.log(`line: ${line}, pattern: ${pattern}`);
   return true;
 };
 
@@ -36,5 +36,5 @@ const invalid = (range) => {
 const score = ranges
   .map((range) => invalid(range))
   .reduce((sum, val) => sum + val, 0);
-
 console.log(score);
+console.timeEnd();
