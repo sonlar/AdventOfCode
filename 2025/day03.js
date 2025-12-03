@@ -18,6 +18,7 @@ const partOne = (line) => {
   return String(first + second);
 };
 
+console.time();
 const partTwo = (line) => {
   let bank = line.slice(0, 12).split("");
   for (let i = 12; i < line.length; i++) {
@@ -37,7 +38,9 @@ const partTwo = (line) => {
 };
 
 const sum = lines
-  .map((line) => Number(maxBank(line)))
+  .map((line) => Number(partTwo(line)))
   .reduce((sum, val) => sum + val, 0);
 
 console.log(sum);
+
+console.timeEnd();
