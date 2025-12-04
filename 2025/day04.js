@@ -5,8 +5,9 @@ const lines = data.trimEnd().split("\n");
 const len = lines.at(0).length;
 lines.unshift(".".repeat(len));
 lines.push(".".repeat(len));
-const border = lines.map((line) => "." + line + ".");
+let border = lines.map((line) => "." + line + ".");
 
+console.time();
 const checkAdjacent = (row, col) => {
   let count = 0;
   const re = /@/g;
@@ -19,14 +20,27 @@ const checkAdjacent = (row, col) => {
 };
 const rolls = (border) => {
   let count = 0;
+  let borderSlice = border.slice();
   for (let row = 0; row < border.length; row++) {
     const line = border.at(row);
     for (let col = 0; col < line.length; col++) {
-      if (border[row][col] === "@") {
-        if (checkAdjacent(row, col)) count += 1;
+      if (border[row][col] === "@" && checkAdjacent(row, col)) {
+        count += 1;
+        borderSlice[row] =
+          borderSlice.at(row).slice(0, col) +
+          "." +
+          borderSlice.at(row).slice(col + 1);
       }
     }
   }
-  console.log(count);
+  totalCount += count;
+  return borderSlice;
 };
-rolls(border);
+let totalCount = 0;
+let lastCount = 0;
+do {
+  lastCount = totalCount;
+  border = rolls(border);
+} while (totalCount != lastCount);
+console.timeEnd();
+console.log(totalCount);
