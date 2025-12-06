@@ -31,4 +31,5 @@
 | 2        | [Gift Shop](https://adventofcode.com/2025/day/2)          | [`Day 02`](2025/day02.js)               | ⭐⭐     |
 | 3        | [Lobby](https://adventofcode.com/2025/day/3)              | [`Day 03`](2025/day03.js)               | ⭐⭐     |
 | 4        | [Printing Department](https://adventofcode.com/2025/day/4)| [`Day 04`](2025/day04.js)               | ⭐⭐     |
-| **4/12** | -                                                         | [`2025`](2025/)                         | **8/24** |
+| 5        | [Cafeteria](https://adventofcode.com/2025/day/5)          | [`Day 05`](2025/day05.js)               | ⭐⭐     |
+| **5/12** | -                                                         | [`2025`](2025/)                         | **10/24** |
