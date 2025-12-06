@@ -17,18 +17,22 @@ const partOne = () => {
     .reduce((count, hit) => count + hit, 0);
   return freshCount;
 };
+console.time("part one");
+console.log(partOne());
+console.timeEnd("part one");
 const partTwo = () => {
-  const mergedRanges = ranges
+  const freshID = ranges
     .sort((a, b) => a[0] - b[0])
     .reduce((merged, range) => {
       const last = merged[merged.length - 1];
       last && range[0] <= last[1]
         ? (last[1] = Math.max(range[1], last[1]))
         : merged.push(range);
-      console.log(merged);
       return merged;
     }, [])
     .reduce((count, [min, max]) => count + max - min + 1, 0);
-  return mergedRanges;
+  return freshID;
 };
+console.time("part two");
 console.log(partTwo());
+console.timeEnd("part two");
